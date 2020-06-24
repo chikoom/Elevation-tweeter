@@ -42,10 +42,11 @@ const Tweeter = () => {
     for(let postIndex in _posts){
       if(_posts[postIndex].id === postID){
         _posts.splice(postIndex,1)
-        return
+        return true
       }
     }
-    console.log('Did not found Post with the iD given')
+    console.log('Did not found Post with the ID given')
+    return false
   }
 
   const addComment = (text, postId) => {
@@ -55,10 +56,11 @@ const Tweeter = () => {
           id: `c${++_commentIdCounter}`,
           text: text
         })
-        return
+        return true
       }
     }
-    console.log('Did not found Post with the iD given')
+    console.log('Did not found Post with the ID given')
+    return false
   }
 
   const removeComment = (postId, commentId) => {
@@ -67,12 +69,13 @@ const Tweeter = () => {
         for(let commentIndex in post.comments){
           if(post.comments[commentIndex].id === commentId){
             post.comments.splice(commentIndex,1)
-            return
+            return true
           }
         }
       }
     }
-    console.log('Did not found Post or Comment with the iD given')
+    console.log('Did not found Post or Comment with the ID given')
+    return false
   }
   
   return {
