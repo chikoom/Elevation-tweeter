@@ -29,13 +29,21 @@ const Tweeter = () => {
   const getPosts = () => _posts
 
   const addPost = text => {
-    _posts.push(
-      {
-        text: text,
-        id: `p${++_postIdCounter}`,
-        comments: []
-      }
-    )
+    if(text.length > 0)
+    {
+      _posts.push(
+        {
+          text: text,
+          id: `p${++_postIdCounter}`,
+          comments: []
+        }
+      )
+      return true
+    } else {
+      return false
+    }
+    
+    
   }
 
   const removePost = postID => {

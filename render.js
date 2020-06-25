@@ -3,7 +3,10 @@ const Renderer = () => {
 
   const createComments = post => {
 
-    const $commentsContainer = $('<ul class="comments"></div>')
+    const $commentsContainer = $('<div class=comments-container></div>')
+    const $commentsInput = $(`<div class="comments-input"><input class="input-comment" type="text" placeholder="Type a comment"><button class="submit-comment">Submit</button></div>`)
+
+    const $commentsList = $('<ul class="comments"></ul>')
 
     for(let comment of post.comments){
       const $singleComment = `
@@ -11,8 +14,11 @@ const Renderer = () => {
           <p>${comment.text}</p>
           <button class="delete-comment">X</button>
         </li>`
-      $commentsContainer.append($singleComment)
+      $commentsList.append($singleComment)
     }
+
+    $commentsContainer.append($commentsInput)
+    $commentsContainer.append($commentsList)
 
     return $commentsContainer
   }
@@ -34,6 +40,8 @@ const Renderer = () => {
 
     for (let post of posts) 
       $postsContainer.append(createPost(post))
+
+    return true
 
   }
 
